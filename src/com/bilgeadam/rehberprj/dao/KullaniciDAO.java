@@ -9,7 +9,7 @@ public class KullaniciDAO {
 
     public static boolean giriseYetkiliMi(KullaniciDTO kullanici) throws SQLException, ClassNotFoundException {
 
-        String vtSifre = "";
+        String vtSifre = null;
         Connection conn = VTBaglanti.baglantiGetir();
 
         String sorgu = "select sifre from kullanici where kullanici_adi=?";
