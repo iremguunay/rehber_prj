@@ -36,12 +36,41 @@ public class KisiDAOTest {
         }
     }
 
+    public void silTest() throws SQLException, ClassNotFoundException {
+
+        boolean sonuc = KisiDAO.sil(1);
+
+        if (sonuc)
+            System.out.println("Başarıyla silindi!");
+        else
+            System.out.println("Kişi bulunamadı!");
+    }
+
+    public void guncelleTest() throws ParseException, SQLException, ClassNotFoundException {
+        KisiDTO kisi = new KisiDTO();
+        kisi.setNo(2);
+        kisi.setAd("Aziz");
+        kisi.setSoyad("Pancar");
+        kisi.setMaas(1000);
+        kisi.setDogtar(CevirmeIslemleri.strToUtilDate("02/10/1950"));
+        kisi.setCepTel("+9053242347454");
+
+        boolean sonuc = KisiDAO.guncelle(kisi);
+
+        if (sonuc)
+            System.out.println("Başarıyla güncellendi");
+        else
+            System.out.println("Güncellenemedi!!!");
+    }
+
     public static void main(String[] args) {
 
         try {
             KisiDAOTest kdt = new KisiDAOTest();
             //kdt.ekleTest();
-            kdt.listeleTest();
+            //kdt.listeleTest();
+            //kdt.silTest();
+            kdt.guncelleTest();
         }
         catch (SQLException e) {
             e.printStackTrace();
